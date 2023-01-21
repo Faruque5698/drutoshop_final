@@ -1,0 +1,14 @@
+1.create a subcategory table
+
+3.create a subcategory table
+
+
+4.create a Product table
+
+
+
+
+
+
+Date: 30-06-22
+all section review and product add done.
