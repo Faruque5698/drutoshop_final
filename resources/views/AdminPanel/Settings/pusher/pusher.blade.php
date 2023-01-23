@@ -46,7 +46,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="text-warning"><strong>Pusher Setting</strong></h1>
+                        <h1 class="" style="color: blue"><strong>Pusher Setting</strong></h1>
                         </i></a>
                     </div>
 
@@ -101,7 +101,7 @@
                                                 <p class="mb-2">PUSHER APP ID</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <input type="text" name="app_id" value="{{$puhser->app_id}}" class="text-muted form-control mb-0">
+                                                <input type="text" name="app_id" value="{{$puhser->app_id ?? ''}}" class="text-muted form-control mb-0">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                                 <p class="mb-2">PUSHER APP KEY</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <input type="text" name="key" value="{{$puhser->key}}" class="text-muted form-control mb-0">
+                                                <input type="text" name="key" value="{{$puhser->key ?? ''}}" class="text-muted form-control mb-0">
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                                 <p class="mb-2">PUSHER APP SECRET</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <input type="text" name="secret" value="{{$puhser->secret}}" class="text-muted form-control mb-0">
+                                                <input type="text" name="secret" value="{{$puhser->secret ?? ''}}" class="text-muted form-control mb-0">
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                                 <p class="mb-2">PUSHER APP CLUSTER</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <input type="text" name="cluster" value="{{$puhser->cluster}}" class="text-muted form-control mb-0">
+                                                <input type="text" name="cluster" value="{{$puhser->cluster ?? ''}}" class="text-muted form-control mb-0">
                                             </div>
                                         </div>
                                     </div>

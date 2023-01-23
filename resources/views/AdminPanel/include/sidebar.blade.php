@@ -1,15 +1,20 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-light-lightblue text-dark elevation-4">
 
 
     <!-- Sidebar -->
     <div class="sidebar">
+
+        <a href="" class="brand-link">
+            <img src="{{ asset('Admin/image/genarel/632e9190ec088.png') }}" width="150PX" height="30PX;" class="" alt="User Image">
+            {{-- <span class="brand-text font-weight-light">DishNet</span> --}}
+          </a>
         <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                {{-- <img src="{{ asset('Admin/image/genarel/632e9190ec088.png') }}" width="300px" height="100px" class="" alt="User Image"> --}}
+        {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="brand-link">
+                <img src="{{ asset('Admin/image/genarel/632e9190ec088.png') }}"  class=" alt="User Image">
                 <h3 class="text-warning">DrutoSoft</h3>
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -70,6 +75,43 @@
                         <p class="text">Home</p>
                     </a>
                 </li> --}}
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fa fa-globe text-primary"></i>
+                      <p class="text-{{ (request()->is('admin/order*')) ? 'warning' : '' }}">
+                        Order
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('admin.order') }}" class="nav-link pl-3">
+                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
+                            <p class="text-{{ (request()->is('admin/order/list')) ? 'warning' : '' }}">Order List</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('panding.order-list') }}" class="nav-link pl-3">
+                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
+                            <p class="text-{{ (request()->is('admin/order/pending-order-list')) ? 'warning' : '' }}">Pending Order List</p>
+                        </a>
+                        <a href="{{ route('confirm.order-list') }}" class="nav-link pl-3">
+                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
+                            <p class="text-{{ (request()->is('admin/order/confirm-order-list')) ? 'warning' : '' }}">Confiram Order List</p>
+                        </a>
+
+                        <a href="{{ route('success.order-list') }}" class="nav-link pl-3">
+                          <i class="nav-icon fas fa-long-arrow-alt-right"></i>
+                          <p class="text-{{ (request()->is('admin/order/success-order-list')) ? 'warning' : '' }}">Success Order List</p>
+                        </a>
+                        <a href="{{ route('cancel.order-list') }}" class="nav-link pl-3">
+                          <i class="nav-icon fas fa-long-arrow-alt-right"></i>
+                          <p class="text-{{ (request()->is('admin/order/cancel-order-list')) ? 'warning' : '' }}">Cancel Order List</p>
+                        </a>
+                      </li>
+                    </ul>
+                </li>
 
 
 
@@ -162,42 +204,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon fa fa-globe text-primary"></i>
-                      <p class="text-{{ (request()->is('admin/order*')) ? 'warning' : '' }}">
-                        Order
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ route('admin.order') }}" class="nav-link pl-3">
-                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
-                            <p class="text-{{ (request()->is('admin/order/list')) ? 'warning' : '' }}">Order List</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('panding.order-list') }}" class="nav-link pl-3">
-                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
-                            <p class="text-{{ (request()->is('admin/order/pending-order-list')) ? 'warning' : '' }}">Pending Order List</p>
-                        </a>
-                        <a href="{{ route('confirm.order-list') }}" class="nav-link pl-3">
-                            <i class="nav-icon fas fa-long-arrow-alt-right"></i>
-                            <p class="text-{{ (request()->is('admin/order/confirm-order-list')) ? 'warning' : '' }}">Confiram Order List</p>
-                        </a>
 
-                        <a href="{{ route('success.order-list') }}" class="nav-link pl-3">
-                          <i class="nav-icon fas fa-long-arrow-alt-right"></i>
-                          <p class="text-{{ (request()->is('admin/order/success-order-list')) ? 'warning' : '' }}">Success Order List</p>
-                        </a>
-                        <a href="{{ route('cancel.order-list') }}" class="nav-link pl-3">
-                          <i class="nav-icon fas fa-long-arrow-alt-right"></i>
-                          <p class="text-{{ (request()->is('admin/order/cancel-order-list')) ? 'warning' : '' }}">Cancel Order List</p>
-                        </a>
-                      </li>
-                    </ul>
-                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
