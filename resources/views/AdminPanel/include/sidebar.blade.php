@@ -179,6 +179,12 @@
 
 
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.notification.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-tasks text-success"></i>
+                        <p class="text-{{ (request()->is('admin/notification/index')) ? 'warning' : '' }}">Notification</p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">

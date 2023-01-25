@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Services\FCMService;
 
 class OrderDetailController extends Controller
 {
@@ -79,8 +80,6 @@ class OrderDetailController extends Controller
         // fetch data order model
         $orders = Order::where('status', 2)->with('order_to_product','order_to_product.product')->orderBy('id','DESC')->get();
 
-        //return $orders;
-        // return view
         return view('AdminPanel.Order.success-order', [
             "orders" => $orders
         ]);
@@ -101,6 +100,18 @@ class OrderDetailController extends Controller
                 Order::where('id',$order->id)->update([
                     'status' => 1
                 ]);
+
+
+                $user = User::findOrFail($order->user_id );
+
+                FCMService::send(
+                    $user->fcm_token,
+                    [
+                        'title' => 'Order Accept',
+                        'body' => 'Your order approve successfully',
+                    ]
+                );
+
         }
 
 
@@ -120,6 +131,16 @@ class OrderDetailController extends Controller
                 ]);
             }
 
+            $user = User::findOrFail($order->user_id );
+
+            FCMService::send(
+                $user->fcm_token,
+                [
+                    'title' => 'Success',
+                    'body' => 'Your order delivery successfully',
+                ]
+            );
+
 
         return back()->with('message', 'Order Delivery Successfully!');
 
@@ -136,6 +157,16 @@ class OrderDetailController extends Controller
             Order::where('id',$order->id)->update([
                 'status' => 3
             ]);
+
+            $user = User::findOrFail($order->user_id );
+
+            FCMService::send(
+                $user->fcm_token,
+                [
+                    'title' => 'Cancel',
+                    'body' => 'Your order cancel successfully',
+                ]
+            );
         }
 
    		return back()->with('message', 'This Order cancle Successfully!');
