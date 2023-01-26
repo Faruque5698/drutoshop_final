@@ -22,6 +22,7 @@ use \App\Http\Controllers\AdminPanel\SubcategoryController;
 use \App\Http\Controllers\AdminPanel\StockProductController;
 use \App\Http\Controllers\AdminPanel\GenarelSettingController;
 use \App\Http\Controllers\AdminPanel\AdminForgetPassController;
+use App\Http\Controllers\AdminPanel\CustomerNotificationController;
 
 
 
@@ -192,6 +193,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','middleware'=>'checkRole'],
     Route::post('gateway/payment/paypal', [GatewayController::class, 'gateway_paypal'])->name('gateway.payment.paypal');
     Route::post('gateway/payment/stripe', [GatewayController::class, 'gateway_stripe'])->name('gateway.payment.stripe');
     Route::post('gateway/payment/stripe', [GatewayController::class, 'gateway_stripe'])->name('gateway.payment.stripe');
+
+
+    Route::prefix('notification')->group(function(){
+        Route::get('index', [CustomerNotificationController::class, 'index'])->name('admin.notification.index');
+        Route::post('store', [CustomerNotificationController::class, 'store'])->name('admin.notification.store');
+    });
 
 
 });
