@@ -88,4 +88,16 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
 
 
+
+
+
+
 });
+
+Route::get('flash/deal/20',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal_20']);
+Route::get('flash/deal/25',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal25']);
+Route::get('flash/deal/30',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal30']);
+Route::get('flash/deal/35',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal35']);
+Route::get('flash/deal/40',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal40']);
+Route::get('flash/deal/45',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal45']);
+Route::get('flash/deal/50',[\App\Http\Controllers\AdminPanel\FlashDealController::class,'deal50']);
