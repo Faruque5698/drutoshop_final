@@ -78,7 +78,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="nav-icon fa fa-globe text-primary"></i>
+                      <i class="nav-icon fa fa-shopping-cart text-warning"></i>
                       <p class="text-{{ (request()->is('admin/order*')) ? 'warning' : '' }}">
                         Order
                         <i class="right fas fa-angle-left"></i>
@@ -86,32 +86,101 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{ route('admin.order') }}" class="nav-link pl-3">
+                        <a href="{{ route('admin.order') }}" class="nav-link">
                             <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                             <p class="text-{{ (request()->is('admin/order/list')) ? 'warning' : '' }}">Order List</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{ route('panding.order-list') }}" class="nav-link pl-3">
+                        <a href="{{ route('panding.order-list') }}" class="nav-link">
                             <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                             <p class="text-{{ (request()->is('admin/order/pending-order-list')) ? 'warning' : '' }}">Pending Order List</p>
                         </a>
-                        <a href="{{ route('confirm.order-list') }}" class="nav-link pl-3">
+                        <a href="{{ route('confirm.order-list') }}" class="nav-link">
                             <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                             <p class="text-{{ (request()->is('admin/order/confirm-order-list')) ? 'warning' : '' }}">Confiram Order List</p>
                         </a>
 
-                        <a href="{{ route('success.order-list') }}" class="nav-link pl-3">
+                        <a href="{{ route('success.order-list') }}" class="nav-link">
                           <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                           <p class="text-{{ (request()->is('admin/order/success-order-list')) ? 'warning' : '' }}">Success Order List</p>
                         </a>
-                        <a href="{{ route('cancel.order-list') }}" class="nav-link pl-3">
+                        <a href="{{ route('cancel.order-list') }}" class="nav-link">
                           <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                           <p class="text-{{ (request()->is('admin/order/cancel-order-list')) ? 'warning' : '' }}">Cancel Order List</p>
                         </a>
                       </li>
                     </ul>
                 </li>
+
+                <li class="nav-item
+
+                ">
+                      <a href="#" class="nav-link
+
+                  ">
+                          <i class="nav-icon fa fa-product-hunt" style="color:orange"></i>                    <p>
+                            Product
+                              <i class="fas fa-angle-left right"></i>
+                              <span class="badge badge-info right"></span>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{route('banner.index')}}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/banner*')) ? 'warning' : '' }}">Banner</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.category')}}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/category*')) ? 'warning' : '' }}">category</p>
+                            </a>
+                        </li>
+                        <li class="nav-itemnav-item">
+                            <a href="{{route('admin.subcategory')}}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/subcategory*')) ? 'warning' : '' }}">Sub category</p>
+                            </a>
+                        </li>
+
+                         <li class="nav-item">
+                            <a href="{{ route('admin.brand') }}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/brand*')) ? 'warning' : '' }}">Brand</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.color') }}" class="nav-link ">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/color*')) ? 'warning' : '' }}">Color</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.size') }}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/size*')) ? 'warning' : '' }}">Size</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.product') }}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('admin/product*')) ? 'warning' : '' }}">Product list</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('product.flash.deal.all') }}" class="nav-link">
+                                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                                <p class="text-{{ (request()->is('product/flash-deal/all')) ? 'warning' : '' }}">Flash Deal</p>
+                            </a>
+                        </li>
+
+                      </ul>
+                  </li>
 
 
 
@@ -124,58 +193,7 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a href="{{route('banner.index')}}" class="nav-link">
-                        <i class="nav-icon fa fa-list-alt text-primary"></i>
-                        <p class="text-{{ (request()->is('admin/banner*')) ? 'warning' : '' }}">Banner</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.category')}}" class="nav-link">
-                        <i class="nav-icon fa fa-list-alt text-primary"></i>
-                        <p class="text-{{ (request()->is('admin/category*')) ? 'warning' : '' }}">category</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.subcategory')}}" class="nav-link">
-                        <i class="nav-icon fa fa-list-alt text-success"></i>
-                        <p class="text-{{ (request()->is('admin/subcategory*')) ? 'warning' : '' }}">Sub category</p>
-                    </a>
-                </li>
 
-                 <li class="nav-item">
-                    <a href="{{ route('admin.brand') }}" class="nav-link">
-                        <i class="nav-icon fa fa-star text-warning"></i>
-                        <p class="text-{{ (request()->is('admin/brand*')) ? 'warning' : '' }}">Brand</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.color') }}" class="nav-link ">
-                        <i class="nav-icon fa fa-globe text-primary"></i>
-                        <p class="text-{{ (request()->is('admin/color*')) ? 'warning' : '' }}">Color</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('admin.size') }}" class="nav-link">
-                        <i class="nav-icon fa fa-th-large text-danger"></i>
-                        <p class="text-{{ (request()->is('admin/size*')) ? 'warning' : '' }}">Size</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('admin.product') }}" class="nav-link">
-                        <i class="nav-icon fa fa-tasks text-success"></i>
-                        <p class="text-{{ (request()->is('admin/product*')) ? 'warning' : '' }}">Product list</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('product.flash.deal.all') }}" class="nav-link">
-                        <i class="nav-icon fa fa-tasks text-success"></i>
-                        <p class="text-{{ (request()->is('product/flash-deal/all')) ? 'warning' : '' }}">Flash Deal</p>
-                    </a>
-                </li>
 
 
 
@@ -196,13 +214,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{ route('stock.index') }}" class="nav-link pl-3">
+                        <a href="{{ route('stock.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                             <p class="text-{{ (request()->is('admin/stock')) ? 'warning' : '' }}">Stock Products</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{ route('stock.details.product') }}" class="nav-link pl-3">
+                        <a href="{{ route('stock.details.product') }}" class="nav-link">
                           <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                           <p class="text-{{ (request()->is('admin/stock/details/product')) ? 'warning' : '' }}">Size & Color Stock</p>
                         </a>
@@ -222,19 +240,19 @@
                     </a>
                      <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{ route('setting.genarel') }}" class="nav-link pl-3">
+                        <a href="{{ route('setting.genarel') }}" class="nav-link">
                           <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                           <p class="text-{{ (request()->is('admin/setting/genarel')) ? 'warning' : '' }}">Genarel Settings</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{ route('setting.email') }}" class="nav-link pl-3">
+                        <a href="{{ route('setting.email') }}" class="nav-link">
                           <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                           <p class="text-{{ (request()->is('admin/setting/email')) ? 'warning' : '' }}">Email Settings</p>
                         </a>
                       </li>
                          <li class="nav-item">
-                        <a href="{{ route('setting.pusher') }}" class="nav-link pl-3">
+                        <a href="{{ route('setting.pusher') }}" class="nav-link">
                             <i class="nav-icon fas fa-long-arrow-alt-right"></i>
                             <p>Pusher Settings</p>
                         </a>
@@ -248,7 +266,7 @@
 
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="{{ route('setting.payment.stripe') }}" class="nav-link pl-3">
+                            <a href="{{ route('setting.payment.stripe') }}" class="nav-link">
                                 <i class="fab fa-cc-stripe pr-2"></i>
                                 <p class="text-{{ (request()->is('admin/setting/payment/stripe')) ? 'warning' : '' }}">Stripe</p>
                             </a>
@@ -263,7 +281,7 @@
 {{--                          </li>--}}
 
                            <li class="nav-item">
-                            <a href="{{ route('setting.payment.sslcommerz') }}" class="nav-link pl-3">
+                            <a href="{{ route('setting.payment.sslcommerz') }}" class="nav-link">
                                  <i class="fab fa-expeditedssl pr-2"></i>
                                 <p class="text-{{ (request()->is('admin/setting/payment/sslcommerz')) ? 'warning' : '' }}">SSLCommerz</p>
                             </a>
