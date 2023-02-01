@@ -20,6 +20,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/extra-responsive.css">
     <link rel="stylesheet" href="{{asset('assets')}}/partials/style-css.css">
     @yield('style')
+
+    <style>
+        body{
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
