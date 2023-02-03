@@ -65,9 +65,9 @@
                                         <th>Product Title</th>
                                         <th>Price</th>
                                         <th>Seling Price</th>
-                                        <th>Feature</th>
-                                        <th>Tranding</th>
+                                        <th>Popular</th>
                                         <th>Exclusive</th>
+                                        <th>Tranding Deals</th>
                                         <th>Status</th>
                                         <th>Action</th>
 
@@ -81,30 +81,28 @@
                                     @php($i=1)
 
                                     @foreach($products as $product)
-                                        <tr>
+                                        <tr class="text-center">
                                            <input type="hidden" value="{{ $product->id }}" class="product-id" />
                                            <td>{{$i++}}</td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{number_format($product->price)}}</td>
                                             <td>{{number_format($product->discount_price)}}</td>
                                             <td>
-
                                                 <a href="{{ route('product.futurs', ["id"=>$product->id]) }}" class="btn btn-{{$product->future_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->future_product == 1 ? 'On':'Off'}}</a>
 
                                             </td>
                                             <td>
-                                                <a href="{{ route('product.trands', ["id"=>$product->id]) }}" class="btn btn-{{$product->trand_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->trand_product == 1 ? 'On':'Off'}}</a>
-
+                                                 <a href="{{ route('product.exclusive', ["id"=>$product->id]) }}" class="btn btn-{{$product->exclusive_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->exclusive_product == 1 ? 'On':'Off'}}</a>
                                             </td>
                                             <td>
-                                                 <a href="{{ route('product.exclusive', ["id"=>$product->id]) }}" class="btn btn-{{$product->exclusive_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->exclusive_product == 1 ? 'On':'Off'}}</a>
+                                                <a href="{{ route('product.flash.deal', ["id"=>$product->id]) }}" class="btn btn-sm btn-dark mb-1"><i class="fa fa-bolt"></i></a>
                                             </td>
                                             <td>{{$product->status == 'active' ? 'Published':'Unpublished'}}</td>
                                             <td>
                                                 <a href="{{ route('product.status', ["id"=>$product->id]) }}" class="btn btn-sm btn-{{$product->status == 'active' ? 'success':'warning'}} mb-1"><i class="fa fa-{{$product->status == 'active' ? 'arrow-up':'arrow-down'}}"></i></a>
                                                 <a href="{{ route('product.edit', ["id"=>$product->id]) }}" class="btn btn-sm btn-info mb-1"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('product.single', ["id"=>$product->id]) }}" class="btn btn-sm btn-primary mb-1"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('product.flash.deal', ["id"=>$product->id]) }}" class="btn btn-sm btn-dark mb-1"><i class="fa fa-bolt"></i></a>
+
 
                                                 <a href="" class="btn btn-sm btn-danger mb-1 delete" data-toggle="modal" data-target="#modal-product" ><i class="fa fa-trash"></i></a>
                                             </td>
