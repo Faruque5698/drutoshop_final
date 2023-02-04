@@ -166,6 +166,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','middleware'=>'checkRole'],
     Route::get('order/success/{order_id}', [OrderDetailController::class, 'success'])->name('order.success');
     Route::get('order/cancel/{order_id}', [OrderDetailController::class, 'cancel'])->name('order.cancel');
 
+    Route::get('order-details/{order_id}', [OrderDetailController::class, 'details'])->name('order.details');
+
 
 
     // Settings
