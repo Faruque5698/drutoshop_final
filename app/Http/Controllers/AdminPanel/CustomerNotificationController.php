@@ -38,18 +38,20 @@ class CustomerNotificationController extends Controller
                 "image"  =>  $imageUrl,
             ]);
 
-            $users = User::all();
+            //$users = User::all();
 
-            foreach ($users as $user){
+            $fcm_token = "c8HlPLSZSNSGSxogNeavog:APA91bHReNMCni23G00CdJi7g6G1c6QnjkhJt1OPzLUsnrbppvWDKpFQryp1m4m2cCBQKlZAeCvPZOKlc-XhvHI5pt5gWCjVe5lLT_qDgNeKTvadiEA9OQyAFbVyFaa6uM2QeTs9MJmX";
+
+            // foreach ($users as $user){
                 FCMService::send(
-                    $user->fcm_token,
+                    $fcm_token,
                     [
                         'title' => $notification->title,
                         'body' => $notification->body,
-                        'image' => $notification->image,
+                        'image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png',
                     ]
                 );
-            }
+            // }
 
             return back()->with('message', 'Notification Send Successfully');
         }
