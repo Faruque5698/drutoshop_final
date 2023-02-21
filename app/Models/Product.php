@@ -57,7 +57,6 @@ class Product extends Model
 
 
     protected $casts = [
-        'images' => 'array',
-        'color_code' => 'array',
+        'images' => "array",
     ];
 }

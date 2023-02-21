@@ -117,12 +117,12 @@ Add Product
                         <div class="form-row">
 
                             <div class="col-6">
-                                <input type="text" name="price" id="priceVal" class="form-control @error('price') is-invalid @enderror" placeholder="Price">
+                                <input type="number" name="price" id="priceVal" class="form-control @error('price') is-invalid @enderror" placeholder="Price">
                             </div>
 
 
                             <div class="col-6">
-                                <input type="text" name="discount_rate" class="form-control discount-price" id="discountPrice" placeholder="Discount Rate (1-100%)">
+                                <input type="number" name="discount_rate" class="form-control discount-price" id="discountPrice" placeholder="Discount Rate (1-100%)">
                                 <span id="disCountPriceError" class="pl-2" style="color: red;"></span>
                             </div>
 
@@ -130,36 +130,16 @@ Add Product
                         <hr>
 
                         <div class="form-row">
-                            <div class="col-12">
-                                <select class="form-control " id="discount" name="discount_type">
-                                    <option selected>Select Discount Type</option>
-                                    <option value="%">Parcentage</option>
-                                </select>
-                                <span id="discountError" class="pl-2" style="color: red;"></span>
-                            </div>
-
-                        </div>
-                        <hr>
-                        <div class="form-row">
                             <div class="col-12" id="disCount">
                                 <input  type="number" name="discount_price" id="disResult"  class="form-control @error('price') is-invalid @enderror" placeholder="Total">
                             </div>
                             <span id="priDisError" class="pl-2" style="color: red;"></span>
                         </div>
                         <hr>
-                        <div class="form-row">
-                            <div class="col-3">
-                                <input class="form-check-input ml-1" id="check" type="checkbox" id="check1" value="something">
-                                <label class="ml-4">Add Variant</label>
-                            </div>
-                            <div class="col-9">
-                                <input  type="number" name="quantity" id="updateQuantity"  class="form-control" placeholder="Quantity">
-                                <span id="QuantityErrr" class="pl-2" style="color: red;"></span>
-                            </div>
-                        </div>
 
-                        <div class="form-row variant">
-                            <div class="col-4">
+
+                        <div class="form-row">
+                            <div class="col-7">
                                 <select  id="sizeId" class="select-size form-control mb-1" >
                                     <option value="0">Select Size</option>
                                     @foreach($sizes as $size)
@@ -168,21 +148,12 @@ Add Product
                                 </select>
                                 <span id="sizeError" class="pl-2" style="color: red;"></span>
                             </div>
-                            <div class="col-4">
-                                <select  id="colorId"  class="select-color form-control  mb-1" >
-                                    <option value="0">Select Color</option>
-                                    @foreach($colors as $color)
-                                    <option class="colorText" value="{{ $color->color_code }}">{{ $color->color_name }}</option>
-                                    @endforeach
-                                </select>
-                                <span id="colorError" class="pl-2" style="color: red;"></span>
 
-                            </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <input type="number" id="sizeColorQty" class="form-control"  placeholder="Quantity">
                             </div>
                             <div class="col-2 text-center">
-                                <button id="addRow" class="ml-2 btn btn-primary w-100">Add</button>
+                                <button type="button" id="addRow" class="ml-2 btn btn-primary w-100">Add</button>
                             </div>
                         </div>
 
@@ -280,8 +251,6 @@ Add Product
         $(document).on("click","#remove", function(){
           var temData =  $(this).val();
 
-        //   alert(temData);
-
                 var data = {
                     "_token" : $('input[name="csrf-token"]').val(),
                     "id"     : temData,
@@ -363,16 +332,7 @@ Add Product
 
         });
 
-        $("#check").click(function(){
-            if(this.checked){
-                $('#updateQuantity').hide();
-                $('.variant').show();
 
-            }else{
-               $('#updateQuantity').show();
-               $('.variant').hide();
-            }
-        });
 
 
 
@@ -397,17 +357,27 @@ Add Product
 
 
 
-        $('#discount').change(function(){
-            var discountType = $(this).val();
+        $('#discountPrice').keyup(function(){
+
             var priceVal = $('#priceVal').val();
             var discountPrice = $('#discountPrice').val();
+            var result = ((priceVal * (100 - discountPrice)) / 100);
+            $('#disResult').val(result);
 
-            if(discountType == "%"){
-                var result = ((priceVal * (100 - discountPrice)) / 100);
-                $('#disResult').val(result);
 
-            }
         });
+
+        $('#priceVal').keyup(function(){
+
+            var priceVal = $('#priceVal').val();
+            var discountPrice = $('#discountPrice').val();
+            var result = ((priceVal * (100 - discountPrice)) / 100);
+            $('#disResult').val(result);
+
+
+        });
+
+        priceVal
 
 
 
@@ -440,29 +410,9 @@ Add Product
 
 
 
-        function checkDiscontType() {
-            var discountPrice = $('#discountPrice').val();
-            if (discountPrice == ' ') {
-                $('#discountError').text('Please select your Discount');
-                return false;
-            } else {
-                $('#discountError').text(' ');
-                return true;
-            }
-        };
 
 
 
-        function checkStatus() {
-            var status = $('#status').val();
-            if (status == '0') {
-                $('#statusError').text('Please select status');
-                return false;
-            } else {
-                $('#statusError').text(' ');
-                return true;
-            }
-        };
 
 
        // form validation
