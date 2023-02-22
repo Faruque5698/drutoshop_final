@@ -42,6 +42,10 @@ class CustomerNotificationController extends Controller
             );
         }
 
+
+
+
         return back()->with('message', 'Notification Send Successfully');
     }
 }
+
