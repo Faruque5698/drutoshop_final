@@ -67,13 +67,14 @@ class ProductController extends Controller
     {
 
         $ext = TempData::where('size_id',$request->size_id)->first();
-        if($ext){
-            $temp_data = new TempData();
-            $temp_data->user_id = auth()->user()->id;
-            $temp_data->size_id = $request->size_id;
-            $temp_data->size_name = $request->size_text;
-            $temp_data->quantity = $request->size_color_qty;
-            $temp_data->save();
+
+        if(!$ext){
+//            $temp_data = new TempData();
+//            $temp_data->user_id = auth()->user()->id;
+//            $temp_data->size_id = $request->size_id;
+//            $temp_data->size_name = $request->size_text;
+//            $temp_data->quantity = $request->size_color_qty;
+//            $temp_data->save();
         }else{
             $temp_data = new TempData();
             $temp_data->user_id = auth()->user()->id;
@@ -93,7 +94,7 @@ class ProductController extends Controller
 
 
         foreach($datas as $data){
-            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-7'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-3'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-7'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-3'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
         }
 
 
@@ -105,11 +106,11 @@ class ProductController extends Controller
     public function colorPerSize()
     {
         $datas = TempData::where('user_id', auth()->user()->id)->get();
-        $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-2'><input type='number' value='' class='form-control' disabled></div><div class='col-2 text-center'><button id='remove' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+        $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-2'><input type='number' value='' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
 
 
         foreach($datas as $data){
-            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-7'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-3'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-7'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-3'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
         }
     }
 
@@ -121,6 +122,14 @@ class ProductController extends Controller
         $tem_data->delete();
 
 
+        $datas = TempData::where('user_id', auth()->user()->id)->get();
+        $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-2'><input type='number' value='' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+
+
+        foreach($datas as $data){
+            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-7'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-3'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+        }
+
 
     }
 
@@ -129,11 +138,11 @@ class ProductController extends Controller
         Tempdata::truncate();
 
         $datas = TempData::get();
-        $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-2'><input type='number' value='' class='form-control' disabled></div><div class='col-2 text-center'><button id='remove' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+        $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-4'><input type='text' value='' class='form-control' disabled></div><div class='col-2'><input type='number' value='' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
 
 
         foreach($datas as $data){
-            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-4'><input type='text' value='".$data->color_name."' class='form-control' disabled></div><div class='col-2'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
+            echo $row = "<div class='form-row mb-1 mt-1'><div class='col-4'><input type='text' value='".$data->size_name."' class='form-control' disabled></div><div class='col-4'><input type='text' value='".$data->color_name."' class='form-control' disabled></div><div class='col-2'><input type='number' id='subQunatity' value='".$data->quantity."' class='form-control' disabled></div><div class='col-2 text-center'><button type='button' id='remove' value='".$data->id."' class='ml-2 btn btn-danger w-100'>remove</button></div></div>";
         }
 
     }
