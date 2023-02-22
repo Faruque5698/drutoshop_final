@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Services\FCMService;
 
@@ -15,17 +15,8 @@ class OrderDetailController extends Controller
     public function order()
     {
 
-
-    	// fetch data order model
-
-        // $orders = DB::table('orders')
-        //         ->select('order_id', DB::raw('max(value)'))
-        //         ->groupBy('attr_group_id')
-        //         ->get();
     	$orders = Order::with('order_to_product','order_to_product.product')->orderBy('id','DESC')->get();
 
-    	// return $orders;
-    	// // return view
     	return view('AdminPanel.Order.order-list', [
     		"orders" => $orders
     	]);
@@ -38,8 +29,6 @@ class OrderDetailController extends Controller
         // fetch data order model
         $orders = Order::where('status', 0)->with('order_to_product','order_to_product.product')->orderBy('id','DESC')->get();
 
-        //return $orders;
-        // return view
         return view('AdminPanel.Order.pending-order', [
             "orders" => $orders
         ]);
@@ -52,8 +41,7 @@ class OrderDetailController extends Controller
         // fetch data order model
         $orders = Order::where('status', 3)->with('order_to_product','order_to_product.product')->orderBy('id','DESC')->get();
 
-        //return $orders;
-        // return view
+
         return view('AdminPanel.Order.cancel-order', [
             "orders" => $orders
         ]);
@@ -86,10 +74,6 @@ class OrderDetailController extends Controller
     }
 
 
-    // defaults order status = 0
-
-    //order status  confirm = 1
-
     public function approve($order_id){
     	$order = Order::find($order_id);
 
@@ -105,7 +89,7 @@ class OrderDetailController extends Controller
                 $user = User::findOrFail($order->user_id );
 
                 FCMService::send(
-                    $user->fcm_token,
+                    $user->device_token,
                     [
                         'title' => 'Order Accept',
                         'body' => 'Your order approve successfully',
@@ -134,7 +118,7 @@ class OrderDetailController extends Controller
             $user = User::findOrFail($order->user_id );
 
             FCMService::send(
-                $user->fcm_token,
+                $user->device_token,
                 [
                     'title' => 'Success',
                     'body' => 'Your order delivery successfully',
@@ -161,7 +145,7 @@ class OrderDetailController extends Controller
             $user = User::findOrFail($order->user_id );
 
             FCMService::send(
-                $user->fcm_token,
+                $user->device_token,
                 [
                     'title' => 'Cancel',
                     'body' => 'Your order cancel successfully',

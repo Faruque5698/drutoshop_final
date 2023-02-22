@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Helper\ApiResponse;
+use App\Models\AdsBanner;
 
 class BannerController extends Controller
 {
@@ -22,4 +23,12 @@ class BannerController extends Controller
 
     	return ApiResponse::success($banner_arr);
     }
+
+    public function ads()
+    {
+        $ads = AdsBanner::find(1);
+        return ApiResponse::success($ads);
+    }
+
+
 }

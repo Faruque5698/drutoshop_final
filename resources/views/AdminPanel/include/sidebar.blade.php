@@ -192,13 +192,13 @@
               <li class="nav-item">
                 <a href="{{route('banner.index')}}" class="nav-link pl-3 {{($route == 'banner.index')?'active': ''}}">
                   <i class="fas fa-caret-right nav-icon"></i>
-                  <p>Banner</p>
+                  <p>Slider</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.adsBanner.index')}}" class="nav-link pl-3 {{($route == 'admin.adsBanner.index')?'active': ''}}">
                   <i class="fas fa-caret-right nav-icon"></i>
-                  <p>Ads Banner</p>
+                  <p>Ads</p>
                 </a>
               </li>
 
@@ -225,12 +225,12 @@
                     <p class="text-{{ (request()->is('admin/notification/index')) ? 'warning' : '' }}">All user Notification</p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="" class="nav-link pl-3">
                 <i class="fas fa-caret-right nav-icon"></i>
                 <p>Single Notification</p>
               </a>
-            </li>
+            </li> --}}
 
           </ul>
         </li>

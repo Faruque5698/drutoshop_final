@@ -29,9 +29,14 @@ class AdsBannerController extends Controller
             $db_path = $url.$image_name;
             $image ->move($url,$image_name);
 
-            $ads_banner = new AdsBanner();
-            $ads_banner->image = $db_path;
-            $ads_banner->save();
+            $ads_banner = AdsBanner::find(1);
+            if($ads_banner->image){
+                unlink($ads_banner->image);
+
+                $ads_banner->image = $db_path;
+                $ads_banner->save();
+            }
+
 
             return back()->with('message','Ads Banner Add Successfully');
         }

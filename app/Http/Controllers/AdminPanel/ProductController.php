@@ -426,20 +426,20 @@ class ProductController extends Controller
 
     }
 
-    public function futurs($id)
+    public function populer($id)
     {
-        $feature = Product::find($id);
+        $populer = Product::find($id);
 
-        if ($feature->feature_product == 0) {
-            Product::where('id', $feature->id)->update([
+        if ($populer->feature_product == 0) {
+            Product::where('id', $populer->id)->update([
                 'feature_product' => 1,
             ]);
-            return back()->with('message', 'Feature Product Add Successfully');
+            return back()->with('message', 'Popular Product Add Successfully');
         }else{
-            Product::where('id',$feature->id)->update([
+            Product::where('id',$populer->id)->update([
                'feature_product' => 0,
             ]);
-            return back()->with('message', 'Feature Product Remove Successfully');
+            return back()->with('message', 'Popular Product Remove Successfully');
         }
 
     }

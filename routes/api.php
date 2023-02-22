@@ -26,6 +26,7 @@ Route::post('reset-token/check', [\App\Http\Controllers\Api\UserPasswordResetCon
 Route::post('password-change', [\App\Http\Controllers\Api\UserPasswordResetController::class, 'changePassword']);
 
 Route::get('banner',[\App\Http\Controllers\Api\BannerController::class,'banner']);
+Route::get('ads',[\App\Http\Controllers\Api\BannerController::class,'ads']);
 Route::get('brand',[\App\Http\Controllers\Api\CategoryController::class,'brand']);
 Route::get('category',[\App\Http\Controllers\Api\CategoryController::class,'category']);
 Route::get('subcat-product/{id}',[\App\Http\Controllers\Api\CategoryController::class,'subcatProduct']);
@@ -33,7 +34,7 @@ Route::get('brand-product/{id}',[\App\Http\Controllers\Api\CategoryController::c
 Route::get('all-products',[\App\Http\Controllers\Api\ProductController::class,'product']);
 Route::get('just-landed',[\App\Http\Controllers\Api\ProductController::class,'justLanded']);
 
-Route::get('product/trending',[\App\Http\Controllers\Api\ProductController::class,'trending']);
+//Route::get('product/trending',[\App\Http\Controllers\Api\ProductController::class,'trending']);
 Route::get('product/popular',[\App\Http\Controllers\Api\ProductController::class,'popular']);
 Route::get('product/exclusive',[\App\Http\Controllers\Api\ProductController::class,'exclusive']);
 
@@ -43,6 +44,8 @@ Route::get('product/details/{id}',[\App\Http\Controllers\Api\ProductController::
 
 
 Route::group(["middleware" => ["auth:api"]], function(){
+
+    Route::post('device-token', [App\Http\Controllers\Api\AuthController::class, 'deviceToken']);
 
     Route::get("profile", [\App\Http\Controllers\Api\AuthController::class, "profile"]);
     Route::post("profile/edit", [\App\Http\Controllers\Api\AuthController::class, "edit"]);

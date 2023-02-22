@@ -66,14 +66,6 @@
                                               <textarea class="form-control" name="body" placeholder="Write your message......"></textarea>
                                             </div>
                                           </div>
-                                          <div class="row mb-3">
-                                            <div class="col-sm-3">
-                                              <label for="logo" class="lable-custom">Image</label>
-                                            </div>
-                                            <div class="col-sm-9">
-                                               <input type="file" id="logo" name="image" class="text-muted form-control mb-0">
-                                            </div>
-                                          </div>
                                           <div class="row mt-4">
                                             <div class="col-sm-3">
                                                 <label for="logo" class="lable-custom"></label>
@@ -84,9 +76,6 @@
                                           </div>
                                        </div>
                                     </div>
-
-
-
                               </form>
                           </div>
                     </div>

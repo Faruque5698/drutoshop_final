@@ -88,14 +88,19 @@
                                             <td>{{number_format($product->price)}}</td>
                                             <td>{{number_format($product->discount_price)}}</td>
                                             <td>
-                                                <a href="{{ route('product.futurs', ["id"=>$product->id]) }}" class="btn btn-{{$product->future_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->future_product == 1 ? 'On':'Off'}}</a>
+                                                <a href="{{ route('product.populer', ["id"=>$product->id]) }}" class="btn btn-{{$product->feature_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->feature_product == 1 ? 'On':'Off'}}</a>
 
                                             </td>
                                             <td>
                                                  <a href="{{ route('product.exclusive', ["id"=>$product->id]) }}" class="btn btn-{{$product->exclusive_product == 1 ? 'primary':'warning'}} btn-sm">{{$product->exclusive_product == 1 ? 'On':'Off'}}</a>
                                             </td>
                                             <td>
+                                                @php($check_deal = \App\Models\FlashDeal::where('product_id',$product->id)->first())
+                                                @if ($check_deal)
+                                                  <a href="{{ route('product.flash.deal.edit', ["id"=>$check_deal->id]) }}" class="btn btn-sm btn-warning mb-1"><i class="fa fa-bolt"></i></a>
+                                                @else
                                                 <a href="{{ route('product.flash.deal', ["id"=>$product->id]) }}" class="btn btn-sm btn-dark mb-1"><i class="fa fa-bolt"></i></a>
+                                                @endif
                                             </td>
                                             <td>{{$product->status == 'active' ? 'Published':'Unpublished'}}</td>
                                             <td>

@@ -11,6 +11,7 @@ use App\Models\orderProduct;
 use App\Models\StockProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\FCMService;
 
 class OrderController extends Controller
 {
@@ -19,10 +20,6 @@ class OrderController extends Controller
            'address'=>'required',
            'city'=>'required',
         ]);
-
-        // method hitting count
-
-        // return $request->all();
 
 
         $order_id = 'ord-'.rand(1000,99999);
@@ -59,8 +56,8 @@ class OrderController extends Controller
 //              Product Color size Stock Manage
             $pro_size_color = ColorSizeQty::where('product_id','=',$cart->product_id)->where('color_code','=', $cart->color_code)->where('size_name','=', $cart->size)->first();
 
-            // $pro_size_color->size_color_qty =  $pro_size_color->size_color_qty -  $cart->product_quantity;
-            // $pro_size_color->save();
+            $pro_size_color->size_color_qty =  $pro_size_color->size_color_qty -  $cart->product_quantity;
+            $pro_size_color->save();
 
 //            return $pro_size_color;
 
@@ -69,6 +66,15 @@ class OrderController extends Controller
 
 
         }
+
+
+        FCMService::send(
+            auth()->user()->device_token,
+            [
+                'title' => 'Order Accept',
+                'body' => 'Your order successfully',
+            ]
+        );
 
         $orders = Order::where('user_id','=',auth()->user()->id)->with('order_to_product', 'order_to_product.product')->get();
         return ApiResponse::success($orders);
@@ -97,34 +103,38 @@ class OrderController extends Controller
     public function pending(){
         $user_id = auth()->user()->id;
         $history = Order::where('user_id','=',$user_id)->where('status','=',0)->with('order_to_product','order_to_product.product')->get();
-//        if ($history -> isEmpty()){
-//            return ApiResponse::not_found();
-//        }
+        if ($history -> isEmpty()){
+                $data = [];
+                return ApiResponse::success($data);
+        }
         return ApiResponse::success($history);
     }
 
     public function confirm(){
         $user_id = auth()->user()->id;
         $history = Order::where('user_id','=',$user_id)->where('status','=',1)->with('order_to_product','order_to_product.product')->get();
-//        if ($history -> isEmpty()){
-//            return ApiResponse::not_found();
-//        }
+        if ($history -> isEmpty()){
+            $data = [];
+            return ApiResponse::success($data);
+        }
         return ApiResponse::success($history);
     }
     public function cancel(){
         $user_id = auth()->user()->id;
         $history = Order::where('user_id','=',$user_id)->where('status','=',3)->with('order_to_product','order_to_product.product')->get();
-//        if ($history -> isEmpty()){
-//            return ApiResponse::not_found();
-//        }
+        if ($history -> isEmpty()){
+            $data = [];
+            return ApiResponse::success($data);
+        }
         return ApiResponse::success($history);
     }
     public function success(){
         $user_id = auth()->user()->id;
         $history = Order::where('user_id','=',$user_id)->where('status','=',2)->with('order_to_product','order_to_product.product')->get();
-//        if ($history -> isEmpty()){
-//            return ApiResponse::not_found();
-//        }
+        if ($history -> isEmpty()){
+                $data = [];
+                return ApiResponse::success($data);
+        }
         return ApiResponse::success($history);
     }
 

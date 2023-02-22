@@ -12,7 +12,7 @@ class FlashDeal extends Model
     protected $guarded = ["id"];
 
     protected $casts = [
-        'end_date' => 'datetime',
+         'end_date' => 'datetime',
     ];
 
     public function product()

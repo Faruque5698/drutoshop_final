@@ -146,6 +146,23 @@ class AuthController extends Controller
 
     }
 
+    public function deviceToken(Request $request)
+    {
+        $this->validate($request,[
+            "user_id"           => "required|integer",
+            "device_token"      => "required|string",
+        ]);
+
+        User::where('id', $request->user_id)->update([
+            "device_token" => $request->device_token,
+        ]);
+
+        return response()->json([
+            "status" => 200,
+            "message" => "Device token save successfully!",
+        ]);
+    }
+
 
 
 }

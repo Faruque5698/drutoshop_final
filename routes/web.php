@@ -138,7 +138,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','middleware'=>'checkRole'],
     Route::get('product/varientdelete', [ProductController::class, 'varientDelete'])->name('product.varient.delete');
     Route::post('product/add',[ProductController::class, 'store'])->name('product.add');
     Route::get('product/status/{id}',[ProductController::class, 'status'])->name('product.status');
-    Route::get('product/futurs/{id}',[ProductController::class, 'futurs'])->name('product.futurs');
+    Route::get('product/populer/{id}',[ProductController::class, 'populer'])->name('product.populer');
     Route::get('product/trands/{id}',[ProductController::class, 'trands'])->name('product.trands');
     Route::get('product/exclusive/{id}',[ProductController::class, 'exclusive'])->name('product.exclusive');
     Route::get('product/edit/{id}',[ProductController::class, 'edit'])->name('product.edit');
@@ -150,6 +150,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','middleware'=>'checkRole'],
     Route::get('product/flash-deal/all',[FlashDealController::class, 'all_flash'])->name('product.flash.deal.all');
     Route::get('product/flash-deal/{id}',[FlashDealController::class, 'index'])->name('product.flash.deal');
     Route::post('product/flash-deal/store',[FlashDealController::class, 'store'])->name('product.flash.deal.store');
+    Route::get('product/flash-edit/{id}',[FlashDealController::class, 'edit'])->name('product.flash.deal.edit');
+    Route::post('product/flash-update',[FlashDealController::class, 'update'])->name('product.flash.deal.update');
 
 
 

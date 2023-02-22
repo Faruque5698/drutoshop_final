@@ -51,7 +51,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Flase=h Deal List</h3>
+                                <h3 class="card-title">Flash Deal List</h3>
                                 {{--                            <p>total category : {{$total_category}}</p>--}}
 
                             </div>
@@ -82,8 +82,7 @@
                                             <td>{{number_format($f_deal->flash_price)}}</td>
                                             <td>{{$f_deal->end_date->diffForHumans()}}</td>
                                             <td>
-                                                <a href="{{ route('product.status', ["id"=>$f_deal->id]) }}" class="btn btn-sm btn-{{$f_deal->status == 'active' ? 'success':'warning'}} mb-1"><i class="fa fa-{{$f_deal->status == 'active' ? 'arrow-up':'arrow-down'}}"></i></a>
-                                                <a href="{{ route('product.edit', ["id"=>$f_deal->id]) }}" class="btn btn-sm btn-info mb-1"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('product.flash.deal.edit', ["id"=>$f_deal->id]) }}" class="btn btn-sm btn-info mb-1"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('product.single', ["id"=>$f_deal->product_id]) }}" class="btn btn-sm btn-primary mb-1"><i class="fa fa-eye"></i></a>
                                                 <a href="" class="btn btn-sm btn-danger mb-1 delete" data-toggle="modal" data-target="#modal-product" ><i class="fa fa-trash"></i></a>
                                             </td>
