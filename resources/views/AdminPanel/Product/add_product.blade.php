@@ -251,6 +251,8 @@ Add Product
         $(document).on("click","#remove", function(){
           var temData =  $(this).val();
 
+          // alert(temData);
+
                 var data = {
                     "_token" : $('input[name="csrf-token"]').val(),
                     "id"     : temData,
